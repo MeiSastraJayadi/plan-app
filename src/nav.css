@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Signika+Negative:wght@600&family=Spectral:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Kalam:wght@300&family=Signika+Negative:wght@600&family=Spectral:wght@500&display=swap');
+
+* {
+    padding: 0; 
+    margin: 0; 
+    font-family: 'Signika Negative', sans-serif;
+    box-sizing: border-box; 
+}
+
+html,
+body {
+    overflow-x: hidden; 
+    height: 100%; 
+    margin: 0; 
+}
+
+.page {
+    background-color: #111; 
+    height: 100%; 
+    width: 100%; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    overflow: auto; 
+}
+
+.page .nav {
+    inset: 20px 0 20px 20px; 
+    width: 75px; 
+    height: 610px; 
+    position: fixed; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: #7300e6; 
+    transition: 0.5s; 
+    z-index: 10; 
+}
+
+.page .nav.open {
+    width: 180px; 
+}
+
+.page .nav .toggle {
+    width: 100%; 
+    height: 60px; 
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center; 
+    padding: 0 25px; 
+    position: absolute; 
+    border-bottom: 2px solid #666699;
+    top: 0; 
+    left: 0; 
+    transition: 0.5s; 
+}
+
+.page .nav .toggle:hover {
+    cursor: pointer; 
+}
+
+.page .nav .toggle::before {
+    content: '';
+    width: 20px; 
+    height: 4px; 
+    position: absolute; 
+    transform: translateY(-8px); 
+    background-color: #fff; 
+    transition: 0.5s; 
+}
+
+.page .nav .toggle::after {
+    content: ''; 
+    width: 20px; 
+    height: 4px; 
+    position: absolute; 
+    transform: translateY(8px); 
+    box-shadow: 0 -8px 0 #fff; 
+    background-color: #fff; 
+    transition: 0.5s; 
+}
+
+.page .nav .toggle.open::before {
+    transform: rotate(45deg); 
+}
+
+.page .nav .toggle.open::after {
+    transform: rotate(-45deg);
+    box-shadow: none; 
+}
+
+.page .nav ul {
+    display: flex; 
+    flex-direction: column; 
+    width: 100%; 
+    gap: 10px; 
+}
+
+.page .nav ul li {
+    position: relative; 
+    list-style: none; 
+    width: 100%; 
+    padding: 0 10px; 
+    height: 70px; 
+    transition: 0.5s; 
+}
+
+.page .nav ul li a {
+    position: relative; 
+    display: flex; 
+    justify-content: flex-start; 
+    align-items: center; 
+    text-align: center; 
+    text-decoration: none; 
+}
+
+.page .nav ul li a::hover {
+    cursor: pointer; 
+}
+
+.page .nav ul li a span {
+    padding: 0 17px; 
+}
+
+.page .nav ul li a .icon {
+    position: relative; 
+    height: 60px; 
+    width: 60px; 
+    font-size: 50px; 
+    transform: translateY(3px);
+    color: #fff; 
+    align-items: center; 
+    justify-content: center; 
+    display: flex; 
+    border-radius: 10px; 
+    transition: 0.5s; 
+}
+
+.page .nav ul li a .icon::before {
+    content: '';
+    background-color: #cc33ff; 
+    filter: blur(8px); 
+    position: absolute; 
+    height: 100%; 
+    width: 100%; 
+    opacity: 0; 
+    transition: 0.5s; 
+}
+
+.page .nav ul li a.active .icon {
+    transform: translateX(30px); 
+    background-color: #cc33ff; 
+}
+
+.page .nav.open ul li a.active .icon {
+    transform: translateX(10px); 
+}
+
+.page .nav ul li a.active .icon::before {
+    opacity: 1; 
+}
+
+.page .nav ul li a .text {
+    transform: scaleX(0%) translateY(8px); 
+    visibility: hidden; 
+    transition: 0.2s; 
+    transform-origin: left; 
+    color: #fff; 
+}
+
+.page .nav.open ul li a .text {
+    visibility: visible; 
+    transform: scaleX(100%) translateY(8px); 
+    transition: 0.5s; 
+}
+
+.page .nav ul li a.active .text {
+    transform: scaleX(0%) translate(10px, 8px); 
+    transform-origin: left; 
+    transition: 0.2s;
+}
+
+.page .nav.open ul li a.active .text {
+    transform: scaleX(100%) translate(10px, 8px); 
+    transition: 0.5s; 
+}

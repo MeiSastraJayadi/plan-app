@@ -1,0 +1,816 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Signika+Negative:wght@600&family=Spectral:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Kalam:wght@300&family=Signika+Negative:wght@600&family=Spectral:wght@500&display=swap');
+
+* {
+    padding: 0; 
+    margin: 0; 
+    font-family: 'Signika Negative', sans-serif;
+}
+
+body {
+    width: 100%; 
+    overflow: hidden; 
+    height: 100vh; 
+}
+
+.page {
+    width: 100%; 
+    height: 100%; 
+    background-color: #111; 
+    color: #fff; 
+}
+
+.page .content {
+    width: 87%; 
+    height: 100%; 
+    background-color: #262626; 
+    position: fixed; 
+    overflow: auto; 
+    top: 0; 
+    right: 0; 
+    z-index: 2; 
+    padding-left: 30px; 
+}
+
+.page .content .top {
+    margin-top: 20px; 
+    width: 100%; 
+    position: relative; 
+    height: 90vh; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.page .content .bottom {
+    padding-left: 47px; 
+    margin-top: 20px;
+    width: 100%; 
+    position: relative; 
+    overflow: auto;
+    height: 100%;  
+    background-color: rgba(66,66,66,0.7); 
+    border-radius: 15px 0 0 0; 
+}
+
+.page .content .top .left {
+    width: 70%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.35); 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    position: relative; 
+    border-radius: 10px;
+    overflow: hidden; 
+}
+
+.page .content .top .left .cal {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column; 
+    padding: 20px; 
+}
+
+.page .content .top .left .cal {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column; 
+    padding: 20px; 
+    height: 82%; 
+    width: 78%; 
+    position: absolute; 
+    top: 80px; 
+    left: 80px; 
+    z-index: 10; 
+    background-color: rgba(100,100,100,0.4); 
+    backdrop-filter: blur(25px); 
+    border: .8px solid rgba(200,200,200,.4); 
+}
+
+.page .content .top .left .cal h1 {
+    /*padding-top: 20px; */
+    color: #fff; 
+    font-size: 40px; 
+}
+
+.page .content .top .right {
+    width: 30%; 
+    height: 100%; 
+    background-color: rgba(66,66,66,0.7); 
+    margin-left: 10px; 
+    margin-right: 10px; 
+    border-radius: 10px; 
+    overflow-y: scroll; 
+}
+
+@keyframes animate {
+    0% {
+        transform: translateY(-200px); 
+    }
+    100% {
+        transform: translateY(calc(100vh + 200px))
+    }
+}
+
+.top .left i {
+    position: absolute; 
+    opacity: 0.5; 
+    top: 0; 
+    background-image: linear-gradient(transparent, #fff); 
+    border-bottom-left-radius: 40%; 
+    border-bottom-right-radius: 40%; 
+    animation: animate 1s linear infinite; 
+    z-index: 2; 
+}
+
+.top .left i:nth-child(3n+1) {
+    background-image: linear-gradient(transparent, #0099ff); 
+}
+
+.top .left i:nth-child(3n+2) {
+    background-image: linear-gradient(transparent, #2eb8b8); 
+}
+
+.top .left i:nth-child(3n+3) {
+    background-image: linear-gradient(transparent, #bf80ff); 
+}
+
+
+.bottom h1 {
+    margin-top: 10px; 
+    font-size: 40px; 
+    color: #6600cc; 
+    font-weight: bold; 
+}
+
+.bottom .search {
+    position: absolute; 
+    top: 80px; 
+    left: 40px; 
+    transition: 0.7s; 
+    z-index: 60; 
+}
+
+.bottom .search form {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.bottom .search input {
+    width: 600px; 
+    line-height: 20px; 
+    font-size: 18px; 
+    padding: 7px; 
+    background-color: #e6e6e6;
+    border: none;
+}
+
+.bottom .search button {
+    height: 40px; 
+    background-color: #884dff; 
+    border: none; 
+    color: #fff; 
+    width: 40px; 
+    font-size: 30px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin-left: 4px; 
+}
+
+.bottom .search button:hover {
+    cursor:pointer; 
+    opacity: 0.75; 
+}
+
+.content .bottom .bottom-content .cntn {
+    margin-top: 15px; 
+    width: 95%; 
+    margin-right: 40px; 
+    height: 330px; 
+    background-color: #808080; 
+    display: flex; 
+    position: relative; 
+    justify-content: flex;
+}
+
+.bottom-content {
+    padding-top: 70px; 
+}
+
+.bottom-content .cntn .data {
+    width: 100%;
+    height: 100%; 
+    position: relative; 
+    z-index: 30; 
+}
+
+.bottom-content .cntn .data .data-title {
+    padding: 30px; 
+    padding-bottom: 10px; 
+}
+
+.bottom-content .cntn .data .data-title label {
+    color: #404040; 
+}
+
+.bottom-content .cntn .data .content-detail {
+    padding: 30px; 
+    padding-top: 0; 
+    padding-right: 100px; 
+    overflow: hidden; 
+    height: 145px; 
+}
+
+.bottom-content .cntn .data .content-detail p {
+    color: #111; 
+    font-size: 20px; 
+}
+
+.cntn .data button {
+    position: absolute; 
+    left: 30px; 
+    font-size: 20px; 
+    padding: 8px; 
+    color: #000; 
+    border: none; 
+    background-color: #e6ccff;
+}
+
+.cntn .data button:hover {
+    cursor: pointer; 
+}
+
+.bottom-content .cntn .data .data-title h3 {
+    font-size: 30px; 
+    color: #6600cc; 
+    font-weight: bold; 
+}
+
+.content .bottom .bottom-content .content-description {
+    top: 100px; 
+    left: 20px; 
+    position: absolute; 
+    background-color: #313131; 
+    visibility: hidden; 
+    opacity: 0; 
+    z-index: 100; 
+    width: 80%; 
+    padding: 70px 10vh; 
+    color: #fff; 
+    border: 1px solid #8d8d8d; 
+    transition: 0.7s; 
+}
+
+.content .bottom .bottom-content .content-description.active {
+    visibility: visible; 
+    opacity: 1; 
+}
+
+.content-description.active .btn {
+    padding-top: 20px; 
+    text-align: center; 
+}
+
+.content-description h3 {
+    font-size: 30px; 
+    margin-bottom: 5px; 
+    color: #884dff; 
+}
+
+.content-description p {
+    margin-top: 26px; 
+    font-size: 20px; 
+}
+
+.content-description ul {
+    list-style: none; 
+    padding-left: 10px; 
+}
+
+.content-description.active .btn button {
+    font-size: 20px; 
+    padding: 10px; 
+    background-color: #884dff; 
+    border: none;
+    color: #fff; 
+}
+
+.content-description .btn button:hover {
+    cursor: pointer; 
+}
+
+.content .top .right h2 {
+    margin-top: 10px; 
+    margin-left: 10px; 
+    color: #884dff; 
+}
+
+.content .top .right .today{
+    padding-top: 2%; 
+    padding-bottom: 2%; 
+    width: 100%;
+}
+
+.right .today .today-event {
+    display: flex; 
+    justify-content: flex-start; 
+    margin-left: 17px; 
+    margin-right: 17px; 
+    margin-top: 13px; 
+    border-radius: 5px; 
+    background-color: #9966ff;
+    align-items: center; 
+    padding: 12px; 
+    overflow: hidden; 
+    transition: 0.3s; 
+}
+
+.right .today .today-event:hover {
+    transform: scale(110%); 
+}
+
+.right .today .today-event h3 {
+    color: #fff; 
+    font-size: 23px; 
+    font-weight: bold; 
+}
+
+.right .today .today-event .detail {
+    border-left: 1px solid #e6e6e6; 
+    margin-left: 8px; 
+    background-color: #7733ff;
+    padding: 6px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start; 
+}
+
+.today-event .detail label {
+    color: #404040; 
+}
+
+.add-form {
+    position: fixed; 
+    padding: 25px; 
+    z-index: 200; 
+    top: 10%; 
+    left: 30%; 
+    background-color: rgba(100,100,100,0.4); 
+    border: 2px solid #4d4d4d;
+    opacity: 0; 
+    visibility: hidden; 
+    transition: 0.5s; 
+} 
+
+.add-form.venue {
+    top: 10%; 
+    left: 15%; 
+}
+
+.add-form.user {
+    top : 10%; 
+    left: 30%; 
+}
+
+.add-form.show {
+    visibility: visible; 
+    opacity: 1; 
+}
+
+.add-form .close {
+    display: flex; 
+    justify-content: right;
+    width: 100%; 
+}
+
+.close button {
+    background-color: #9933ff; 
+    color: #fff; 
+    border-radius: 100%; 
+    display: flex; 
+    justify-items: center; 
+    align-content: center; 
+    font-size: 30px; 
+    border: none; 
+}
+
+.close button:hover {
+    cursor: pointer; 
+    opacity: 0.7; 
+}
+
+.add-form .title {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.add-form .title h2 {
+    color: #9966ff; 
+    font-size: 40px; 
+    padding-top: 20px; 
+    padding-bottom: 15px; 
+}
+
+.add-form .double {
+    display: flex; 
+    justify-content: start; 
+}
+
+.add-form .double.loc {
+    width: 100%; 
+}
+
+.add-form .location {
+    padding-left: 10px; 
+    padding-right: 10px; 
+    width: 50%; 
+}
+
+.add-form .double .location input {
+    width: 100%; 
+}
+
+.add-form .single .location {
+    width: 100%; 
+}
+
+.single .location input {
+    width: 100%; 
+}
+
+.single .location textarea {
+    width: 100%; 
+}
+
+.add-form .form-element {
+    padding: 6px; 
+}
+
+.add-form form label {
+    margin-left: 4px; 
+}
+
+.add-form .form-element.name input {
+    width: 70%; 
+}
+
+.add-form form input {
+    border-radius: 8px; 
+    line-height: 22px; 
+    font-size: 19px; 
+    padding-top: 3px; 
+    padding-bottom: 3px; 
+    padding-left: 5px; 
+}
+
+.form-element label {
+    color: #fff; 
+    font-size: 20px; 
+}
+
+.add-form form .btn {
+    width: 100%; 
+    padding-top: 20px; 
+    text-align: center; 
+}
+
+.add-form form .btn button {
+    padding: 10px; 
+    font-size: 20px; 
+    background-color: #9933ff; 
+    border: none; 
+    color: #fff; 
+    border-radius: 3px; 
+}
+
+.add-form form .btn button:hover {
+    opacity: 0.8; 
+    cursor: pointer; 
+}
+
+.top .right .add-recent-box {
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-start; 
+    width: 100%; 
+}
+
+.top .right .add-recent-box button {
+    transform: translate(3.8em, 12px); 
+    background-color: #9933ff; 
+    border: none; 
+    color: #fff; 
+    font-weight: bold; 
+    font-size: 30px; 
+    border-radius: 100%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+.top .right .add-recent-box button:hover {
+    cursor: pointer; 
+    opacity: 0.7; 
+}
+
+.page.blur {
+    filter: blur(20px); 
+    user-select: none; 
+    pointer-events: none; 
+}
+
+.attr {
+    position: absolute; 
+    display: flex; 
+    flex-direction: row; 
+    top : 10px; 
+    right : 10px; 
+    z-index: 300; 
+}
+
+.attr button {
+    background-color: #9900cc; 
+    color: #fff; 
+    border-radius: 100%; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    width: 38px; 
+    height: 38px; 
+    border: none; 
+    margin-left: 8px; 
+    font-size: 20px; 
+}
+
+.attr button:hover {
+    opacity: 0.7; 
+    cursor: pointer; 
+}
+
+.bottom .venue-cntn {
+    width: 90%; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 60vh; 
+    margin-top: 30px; 
+    overflow: hidden; 
+}
+
+.bottom .venue-cntn .image {
+    width: 50%; 
+    height: 100%; 
+}
+
+.bottom .venue-cntn .image img {
+    width: 100%; 
+    height: 100%; 
+}
+
+.bottom .venue-cntn .venue-detail {
+    width: 50%; 
+    padding-left: 50px; 
+    background-color: rgba(20,20,20,0.7);
+    height: 100%; 
+    position: relative; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    flex-direction: column; 
+}
+
+.bottom .venue-cntn .venue-detail .venue-data {
+    display: flex; 
+    justify-content: flex-start; 
+    flex-direction: column; 
+}
+
+.bottom .venue-cntn .venue-detail .venue-data h2 {
+    font-size: 70px; 
+    color: #884dff; 
+}
+
+.bottom .venue-cntn .venue-detail .venue-data label {
+    color: #fff; 
+    font-size: 18px; 
+}
+
+.bottom .venue-cntn .venue-detail .venue-data .address {
+    color: #ddccff; 
+    font-size: 30px; 
+    margin-bottom: 15px; 
+}
+
+.bottom .venue-cntn .venue-detail .attr {
+    position: absolute; 
+    display: flex; 
+    flex-direction: row; 
+    top : 10px; 
+    right : 10px; 
+    z-index: 50; 
+}
+
+.bottom .venue-cntn .venue-detail .attr button {
+    background-color: #9900cc; 
+    color: #fff; 
+    border-radius: 100%; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    width: 38px; 
+    height: 38px; 
+    border: none; 
+    margin-left: 8px; 
+    font-size: 20px; 
+}
+
+.bottom .venue-cntn .venue-detail .attr button:hover {
+    opacity: 0.4; 
+    cursor: pointer; 
+}
+
+.top .right .today.venue-recent .recently {
+    margin-top: 23px; 
+    margin-left: 12px; 
+    margin-right: 3px; 
+    width: 100%; 
+    display: flex; 
+    height: 120px; 
+    overflow: hidden; 
+    transition: 0.5s; 
+}
+
+.top .right .today.venue-recent .recently:hover {
+    transform: scale(102%);
+    cursor: pointer; 
+}
+
+.top .right .today.venue-recent .recently .image {
+    width: 40%; 
+    height: 100%; 
+}
+
+.top .right .today.venue-recent .recently .image img {
+    height: 100%; 
+    width: 100%; 
+}
+
+.top .right .recently .venue-recently-detail {
+    display: flex; 
+    width: 60%;
+    justify-content: flex-start; 
+    flex-direction: column; 
+    padding-top: 30px; 
+    padding-left: 10px; 
+    background-color: rgba(100,100,100,0.4);
+}
+
+.top .right .recently .venue-recently-detail h3 {
+    color: #9966ff; 
+    font-size: 30px; 
+}
+
+.top .right .recently .venue-recently-detail label {
+    color: #fff; 
+}
+
+
+.content .bottom .content-bottom {
+    padding-top: 7%; 
+    padding-bottom: 2%; 
+    position: relative; 
+}
+
+.content-bottom .row {
+    width: 100%;
+    height: 180px; 
+    display: flex; 
+    flex-direction: row; 
+}
+
+.content-bottom .row::after {
+    content: ""; 
+    clear: both; 
+    display: table; 
+}
+
+.content-bottom .row .attendees-bottom {
+    position: relative; 
+    justify-content: center; 
+    display: flex; 
+    align-items: center; 
+    background-color: rgba(100, 100, 100, 0.4); 
+    width: 33.333%; 
+    flex-direction: column; 
+    height: 170px; 
+    overflow: hidden; 
+    margin-top: 18px; 
+    margin-left: 8px; 
+    margin-right: 8px; 
+    float: left; 
+    color: #fff; 
+}
+
+.content-bottom .row .attendees-bottom .attendees-content h2 {
+    color: #9966ff; 
+    font-size: 37px; 
+    margin-top: 10px; 
+}
+
+
+.object-action {
+    position: absolute; 
+    top: 8px; 
+    right: 8px; 
+    display: flex; 
+    justify-content: center; 
+    flex-direction: row; 
+    padding: 4px; 
+}
+
+.object-action button {
+    border-radius: 100%; 
+    background-color: #9933ff;  
+    color: #fff; 
+    font-size: 20px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    border: none; 
+    width: 26px; 
+    height: 26px; 
+    margin-left: 8px; 
+}
+
+.object-action button:hover {
+    cursor: pointer; 
+    opacity: 0.6; 
+}
+
+.right .attendees-recent {
+    padding-bottom: 10px; 
+}
+
+.right .attendees-recent .object {
+    width: 96%; 
+    height: 150px; 
+    margin-top: 18px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column; 
+    margin-left: 12px; 
+    background-color: rgba(100,100,100,0.4);
+    padding-left: 5px; 
+    padding-bottom: 8px; 
+    padding-top: 2px; 
+    overflow: hidden; 
+    position: relative; 
+    transition: 0.2s;
+}
+
+.right .attendees-recent .object .object-detail {
+    padding-top: 15px; 
+    color: #fff; 
+    font-size: 17px; 
+}
+
+.right .attendees-recent .object:hover {
+    transform: scale(102%); 
+}
+
+.right .attendees-recent .object .object-detail h3 {
+    color: #9966ff; 
+    font-size: 37px; 
+    margin-top: 10px; 
+}
+
+.add-form.show.user .form-element {
+    padding: 6px; 
+}
+
+.add-form.show.user form label {
+    margin-left: 4px; 
+}
+
+.add-form.show.user .form-element.firstname input {
+    width: 100%; 
+}
+
+.add-form.show.user .form-element.lastname input {
+    width: 100%; 
+}
+
+.add-form.show.user .form-element.user {
+    width : 50%; 
+}
+
+.add-form.show.user .form-element.sex {
+    width: 75%; 
+}

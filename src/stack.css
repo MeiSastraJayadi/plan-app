@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Signika+Negative:wght@600&display=swap');
+
+* {
+    padding: 0; 
+    margin: 0; 
+    font-family: 'Signika Negative', sans-serif;
+}
+
+.row {
+    padding-top: 30%; 
+    width: 100%; 
+    display: block; 
+}
+
+

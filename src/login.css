@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Signika+Negative:wght@600&family=Spectral:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Kalam:wght@300&family=Signika+Negative:wght@600&family=Spectral:wght@500&display=swap');
+
+* {
+    padding: 0; 
+    margin: 0; 
+    font-family: 'Signika Negative', sans-serif;
+}
+
+body {
+    width: 100%; 
+    overflow: hidden; 
+    height: 100vh; 
+}
+
+.form-box {
+    width: 100%; 
+    background-color: #111;
+    height: 100%; 
+    align-items: center; 
+    justify-content: center; 
+    display: flex; 
+}
+
+.side-right {
+    justify-content: center; 
+    align-items: center; 
+    display: flex; 
+    width: 50%; 
+    height: 130vh; 
+    position: relative; 
+}
+
+.form {
+    background-color: #7300e6;
+    padding: 30px; 
+    position: absolute; 
+    top: 18vh; 
+    left: 100px; 
+}
+
+.ttl {
+    text-align: center; 
+}
+
+.form .ttl h1 {
+    font-size: 40px; 
+    color: #fff; 
+}
+
+.form form .inp {
+    padding-top: 14px; 
+}
+
+.form form .inp label {
+    font-size: 28px; 
+    color: #fff;
+    margin-left: 5px; 
+}
+
+.form form .inp input {
+    line-height: 22px; 
+    font-size: 18px; 
+    margin-top: 4px; 
+    border-radius: 8px; 
+    padding-left: 8px; 
+    padding-top: 4px; 
+}
+
+.form form .btn {
+    text-align: center; 
+    padding: 18px; 
+} 
+
+.form form .btn button {
+    background-color: #666699; 
+    color: #fff; 
+    border: none; 
+    padding: 12px; 
+    font-size: 20px; 
+    border-radius: 3px; 
+}
+
+.form form .btn button:hover {
+    opacity: 0.7; 
+    cursor: pointer; 
+}
+
+.submit {
+    text-align: center; 
+}
+
+.submit a {
+    color: #3399ff;
+}
+
+.left {
+    padding: 30px; 
+}
+
+.form-box .side-left {
+    position: relative; 
+    height: 140.2vh; 
+    min-width: 400px; 
+    background-color: #6600cc;
+}
+
+.form-box .side-left h1 {
+    color: white; 
+    font-size: 50px; 
+    font-weight: 600; 
+    top: 20px; 
+}
+
+.form .middle svg {
+    width: 30px; 
+}
+
+.form-box .side-left img {
+    position: absolute; 
+    left: 30px; 
+    height: 280px; 
+    width: 480px; 
+}
+
+.par {
+    position: absolute; 
+    top: 60vh; 
+    left: 0; 
+    padding: 100px 10vh; 
+    font-size: 26px; 
+    color: white; 
+}

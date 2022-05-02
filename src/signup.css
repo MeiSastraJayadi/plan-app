@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Signika+Negative:wght@600&family=Spectral:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Kalam:wght@300&family=Signika+Negative:wght@600&family=Spectral:wght@500&display=swap');
+
+* {
+    padding: 0; 
+    margin: 0; 
+    font-family: 'Signika Negative', sans-serif;
+}
+
+.sign-box {
+    width: 100vw; 
+    height: 120vh; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    position: relative; 
+    background-color: #111; 
+    overflow: hidden; 
+}
+
+.sign-box .form {
+    position: absolute; 
+    left: 40%; 
+    border: none; 
+    padding: 30px; 
+    background-color: #7300e6; 
+    color: #fff; 
+}
+
+.sign-box .form .ttl {
+    text-align: center; 
+}
+
+.sign-box .form .ttl h1 {
+    font-size: 40px; 
+}
+
+.sign-box .form form .attr {
+    padding-top: 10px; 
+}
+
+.sign-box .form form .attr label {
+    font-size: 28px; 
+    margin-left: 10px; 
+}
+
+.sign-box .form form .attr.ps2 label {
+    font-size: 25px; 
+}
+
+.sign-box .form form .attr input {
+    line-height: 18px; 
+    font-size: 15px; 
+    padding: 8px; 
+    padding-left: 10px; 
+    width: 260px; 
+    margin-top: 8px; 
+    border-radius: 8px; 
+}
+.form form .btn {
+    text-align: center; 
+    padding: 18px; 
+} 
+
+.form form .btn button {
+    background-color: #666699; 
+    color: #fff; 
+    border: none; 
+    padding: 12px; 
+    font-size: 20px; 
+    border-radius: 3px; 
+}
+
+.form form .btn button:hover {
+    opacity: 0.7; 
+    cursor: pointer; 
+}
