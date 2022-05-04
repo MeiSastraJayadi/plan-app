@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/plan-app/static/css/main.cac7ba89.css",
-    "main.js": "/plan-app/static/js/main.481285bc.js",
+    "main.js": "/plan-app/static/js/main.794f13a8.js",
     "static/js/787.8a057e7d.chunk.js": "/plan-app/static/js/787.8a057e7d.chunk.js",
     "static/media/planapp.png": "/plan-app/static/media/planapp.54a091748358fe1121d5.png",
     "index.html": "/plan-app/index.html",
     "static/media/waveHaikei.svg": "/plan-app/static/media/waveHaikei.1dec4c67bea1c82815f150e4ab74ed46.svg",
     "main.cac7ba89.css.map": "/plan-app/static/css/main.cac7ba89.css.map",
-    "main.481285bc.js.map": "/plan-app/static/js/main.481285bc.js.map",
+    "main.794f13a8.js.map": "/plan-app/static/js/main.794f13a8.js.map",
     "787.8a057e7d.chunk.js.map": "/plan-app/static/js/787.8a057e7d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.cac7ba89.css",
-    "static/js/main.481285bc.js"
+    "static/js/main.794f13a8.js"
   ]
 }
