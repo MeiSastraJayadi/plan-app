@@ -8,22 +8,22 @@ function App() {
     <Router>
         <div className="App">
             <Switch>
-                <Route exact path="/">
+                <Route exact path="/plan-app">
                     <Login></Login>
                 </Route>
-                <Route exact path="/sign-up">
+                <Route exact path="/plan-app/sign-up">
                     <SignUp></SignUp>
                 </Route>
-                <Route exact path="/:username/home">
+                <Route exact path="/plan-app/:username/home">
                     <Content path="home"></Content>
                 </Route>
-                <Route exact path="/:username/event">
+                <Route exact path="/plan-app/:username/event">
                     <Content path="event"></Content>
                 </Route>
-                <Route exact path="/:username/venue">
+                <Route exact path="/plan-app/:username/venue">
                     <Content path="venue"></Content>
                 </Route>
-                <Route exact path="/:username/attendees">
+                <Route exact path="/plan-app/:username/attendees">
                     <Content path="attendees"></Content>
                 </Route>
             </Switch>
