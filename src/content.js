@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import EventBottom from './event'; 
 import VenueList from './venue'; 
 import VenueForm from './venueForm'; 
+import RawVenue from './rawVenue'; 
 import RecentUser from './recentUser'; 
 import Raw from './eventRaw'; 
 import User from './ussr'; 
@@ -41,6 +42,7 @@ const Content = ({path}) => {
     const [user, setUser] = useState(null); 
     const [detail, setDetail] = useState(null);
     const [venueDetail, setVenueDetail] = useState(null); 
+    const [venueList, setVenueList] = useState(null)
 
     useEffect(() => {
         const topLeft = topLeftr.current; 
@@ -161,8 +163,10 @@ const Content = ({path}) => {
                         </Route>
                         <Route exact path={`/${username}/venue`}>
                             <h1>All Venue</h1>
-                            <Search search={setSearch} setSearchEvent={setSearchData} Data={eventData} upcoming={false}></Search>
-                            <VenueList token={token} setRV={setRecentVenue} Add={add} setAdd={setAdd}></VenueList>
+                            <Search search={setSearch} setSearchEvent={setSearchData} Data={venueList} upcoming={false}></Search>
+                            <VenueList token={token} setRV={setRecentVenue} Add={add} setAdd={setAdd} setVenueList={setVenueList}></VenueList>
+                            {search && <RawVenue venueData={venueList} setVenueData={setVenueList} searchData={searchData} setSearchData={setSearchData} setAdd={setAdd} token={token}></RawVenue>}
+                            {(searchData && !searchData.length) && <h2>No Data...</h2>}
                         </Route>
                         <Route exact path={`/${username}/attendees`}>
                             <h1>All Attendees</h1>
