@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'; 
-import { HashRouter as Router, Switch, Route } from 'react-router-dom'; 
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'; 
 import { useLocation } from 'react-router-dom'; 
 import { useEffect, useRef, useState } from 'react'; 
 import EventBottom from './event'; 
