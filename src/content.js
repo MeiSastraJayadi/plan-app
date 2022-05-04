@@ -103,13 +103,13 @@ const Content = ({path}) => {
         <div>
             {add && 
                 <Switch>
-                    <Route exact path={`/plan-app/${username}/event`}>
+                    <Route exact path={`/${username}/event`}>
                         <Form searchData={searchData} setSearchData={setSearchData} setEventData={setEventData} EventData={eventData} setAdd={setAdd} status={add} setForm={setForm} username={username} token={token}></Form>
                     </Route>
-                    <Route exact path={`/plan-app/${username}/venue`}>
+                    <Route exact path={`/${username}/venue`}>
                         <VenueForm setAdd={setAdd} token={token} Add={add}></VenueForm>
                     </Route>
-                    <Route exact path={`/plan-app/${username}/attendees`}>
+                    <Route exact path={`/${username}/attendees`}>
                         <UserForm setAdd={setAdd} token={token} Add={add}></UserForm>
                     </Route>
                 </Switch>
@@ -127,19 +127,19 @@ const Content = ({path}) => {
                             </div>
                         </div>
                         <div className="right">
-                            <Route exact path={`/plan-app/${username}/home`}>
+                            <Route exact path={`/${username}/home`}>
                                 <h2>Today Event</h2>
                                 { (allEvent && venueData) && <EventRecentTop data={allEvent} venueObject={venueData}></EventRecentTop>}
                             </Route>
-                            <Route exact path={`/plan-app/${username}/event`}>
+                            <Route exact path={`/${username}/event`}>
                                 <Add setAdd={setAdd} title="Today Event"></Add>
                                 { (allEvent && venueData) && <EventRecentTop data={allEvent} venueObject={venueData}></EventRecentTop>}
                             </Route>
-                            <Route exact path={`/plan-app/${username}/venue`}>
+                            <Route exact path={`/${username}/venue`}>
                                 <Add setAdd={setAdd} title="Recent Venue"></Add>
                                 {rVenue && <RecentVenue data={rVenue}></RecentVenue>}
                             </Route>
-                            <Route exact path={`/plan-app/${username}/attendees`}>
+                            <Route exact path={`/${username}/attendees`}>
                                 <Add setAdd={setAdd} title="Recent User"></Add>
                                 <RecentUser data={rUser}></RecentUser>
                             </Route>
@@ -147,28 +147,28 @@ const Content = ({path}) => {
                     </div>
                     <div className="bottom" ref={contentBottom} id="bottom" onScroll={onScroll}>
                     <Switch>
-                        <Route exact path={`/plan-app/${username}/home`}>
+                        <Route exact path={`/${username}/home`}>
                             <h1>Upcoming Event</h1>
                             <Search search={setSearch} setSearchEvent={setSearchData} Data={eventData} upcoming={true}></Search>
                             {!search && <EventBottom setAdd={setAdd} formActive={formActive} setData={setEventData} attribute={false} setUpcoming={setUpcoming} setVenueData={setVenueData} search={setSearch} token={token} setAttdObject={setAttdObject} upcoming={true} setUser={setUser} setDetail={setDetail} setDetailVenue={setVenueDetail} setAllEvent={setAllEvent} onScroll={onScroll}></EventBottom>}
                             {search && <Raw setEventData={setEventData} setData={null} setAdd={setAdd} data={searchData} venue={venueData} token={token} attribute={false}></Raw>}
                             {(searchData && !searchData.length) && <h2>No Data...</h2>}
                         </Route>
-                        <Route exact path={`/plan-app/${username}/event`}>
+                        <Route exact path={`/${username}/event`}>
                             <h1>All Event</h1>
                             <Search search={setSearch} setSearchEvent={setSearchData} Data={eventData} upcoming={false}></Search>
                             {!search && <EventBottom setAdd={setAdd} formActive={formActive} setUpcoming={setUpcoming} setData={setEventData} attribute={true} setVenueData={setVenueData} token={token} setAttdObject={setAttdObject} upcoming={false} setUser={setUser} setDetail={setDetail} setDetailVenue={setVenueDetail} search={setSearch} setAllEvent={setAllEvent} onScroll={onScroll}></EventBottom>}
                             {search && <Raw eventData={eventData} setEventData={setEventData} setData={setSearchData} setAdd={setAdd} data={searchData} venue={venueData} token={token} attribute={true}></Raw>}
                             {(searchData && !searchData.length) && <h2>No Data...</h2>}
                         </Route>
-                        <Route exact path={`/plan-app/${username}/venue`}>
+                        <Route exact path={`/${username}/venue`}>
                             <h1>All Venue</h1>
                             <Search search={setSearch} setSearchEvent={setSearchData} Data={venueList} upcoming={false}></Search>
                             <VenueList token={token} setRV={setRecentVenue} Add={add} setAdd={setAdd} setVenueList={setVenueList}></VenueList>
                             {search && <RawVenue venueData={venueList} setVenueData={setVenueList} searchData={searchData} setSearchData={setSearchData} setAdd={setAdd} token={token}></RawVenue>}
                             {(searchData && !searchData.length) && <h2>No Data...</h2>}
                         </Route>
-                        <Route exact path={`/plan-app/${username}/attendees`}>
+                        <Route exact path={`/${username}/attendees`}>
                             <h1>All Attendees</h1>
                             <Search search={setSearch} setSearchEvent={setSearchData} Data={eventData} upcoming={false}></Search>
                             <User token={token} setRU={setRecentUser} Add={add} setAdd={setAdd}></User>
