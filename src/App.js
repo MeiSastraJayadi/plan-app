@@ -14,16 +14,16 @@ function App() {
                 <Route exact path="/plan-app/sign-up">
                     <SignUp></SignUp>
                 </Route>
-                <Route exact path="/plan-app/:username/home">
+                <Route exact path="/:username/home">
                     <Content path="home"></Content>
                 </Route>
-                <Route exact path="/plan-app/:username/event">
+                <Route exact path="/:username/event">
                     <Content path="event"></Content>
                 </Route>
-                <Route exact path="/plan-app/:username/venue">
+                <Route exact path="/:username/venue">
                     <Content path="venue"></Content>
                 </Route>
-                <Route exact path="/plan-app/:username/attendees">
+                <Route exact path="/:username/attendees">
                     <Content path="attendees"></Content>
                 </Route>
             </Switch>
