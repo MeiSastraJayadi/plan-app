@@ -8,7 +8,7 @@ function App() {
     <Router>
         <div className="App">
             <Switch>
-                <Route exact path="/">
+                <Route exact path="https://meisastrajayadi.github.io/plan-app/">
                     <Login></Login>
                 </Route>
                 <Route exact path="/sign-up">
