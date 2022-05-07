@@ -47,6 +47,11 @@ const Login = function() {
     const loginData = {username : nameVal, password : passVal}; 
     const url = `https://planapp6-meisastrajayadi.cloud.okteto.net/register_api/user_login`
 
+    const onSign = e => {
+        history.push('/plan-app/sign-up'); 
+        e.preventDefault(); 
+    }
+
     return (
             <div className="form-box">
                 <div className="side-left">
@@ -91,7 +96,7 @@ const Login = function() {
                             </div>
                         </form>
                         <div className="submit">
-                            <p>Create New Account | <a href="/plan-app/sign-up">Sign Up</a></p>
+                            <p>Create New Account | <a onClick={onSign}>Sign Up</a></p>
                         </div>
                     </div>
                 </div>

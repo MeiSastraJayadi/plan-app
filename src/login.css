@@ -94,6 +94,10 @@ body {
     color: #3399ff;
 }
 
+.submit a:hover {
+    cursor: pointer; 
+}
+
 .left {
     padding: 30px; 
 }
