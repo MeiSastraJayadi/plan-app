@@ -91,7 +91,7 @@ const Login = function() {
                             </div>
                         </form>
                         <div className="submit">
-                            <p>Create New Account | <a href="/sign-up">Sign Up</a></p>
+                            <p>Create New Account | <a href="/plan-app/sign-up">Sign Up</a></p>
                         </div>
                     </div>
                 </div>

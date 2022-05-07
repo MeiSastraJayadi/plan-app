@@ -84,7 +84,7 @@ const VenueForm = ({ setAdd, token, Add, setSearchData, setVenueList, searchData
                 console.log(value); 
                 console.log(venueData); 
                 if(value.ok || value.status === 302){
-                    if(method === "PUT" && searchData){
+                    if(method === "PUT" && search){
                         fetch(urlVenueID+Add.id, {
                             method : "GET", 
                             headers : {
@@ -137,14 +137,16 @@ const VenueForm = ({ setAdd, token, Add, setSearchData, setVenueList, searchData
                 }
             })
             .then(result => {
-                const sData = searchData.map(o => o); 
-                const vData = VenueList.map(o => o); 
-                vData.push(result); 
-                if(result.name.includes(search)){
-                    sData.push(result); 
+                if(searchData && VenueList){
+                    const sData = searchData.map(o => o); 
+                    const vData = VenueList.map(o => o); 
+                    vData.push(result); 
+                    if(result.name.includes(search)){
+                        sData.push(result); 
+                    }
+                    setSearchData(sData); 
+                    setVenueList(vData); 
                 }
-                setSearchData(sData); 
-                setVenueList(vData); 
                 setAdd(false); 
                 onClick(); 
                 e.preventDefault();
