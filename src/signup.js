@@ -66,7 +66,7 @@ const SignUp = () => {
                     </div>
                     <div className="btn-sign">
                         {isPending && <button style={{fontSize : '18px'}}disabled>Checking Credential...</button>}
-                        {!isPending && <button>Login</button>}
+                        {!isPending && <button>Sign Up</button>}
                     </div>
                 </form>
             </div>
