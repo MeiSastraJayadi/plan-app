@@ -18,37 +18,38 @@
     overflow: hidden; 
 }
 
-.sign-box .form {
+.sign-box .form-sign {
     position: absolute; 
     left: 40%; 
+    top : 10%; 
     border: none; 
     padding: 30px; 
     background-color: #7300e6; 
     color: #fff; 
 }
 
-.sign-box .form .ttl {
+.sign-box .form-sign .ttl-sign {
     text-align: center; 
 }
 
-.sign-box .form .ttl h1 {
+.sign-box .form-sign .ttl-sign h1 {
     font-size: 40px; 
 }
 
-.sign-box .form form .attr {
+.sign-box .form-sign form .attr-sign {
     padding-top: 10px; 
 }
 
-.sign-box .form form .attr label {
+.sign-box .form-sign form .attr-sign label {
     font-size: 28px; 
     margin-left: 10px; 
 }
 
-.sign-box .form form .attr.ps2 label {
+.sign-box .form-sign form .attr-sign.ps2 label {
     font-size: 25px; 
 }
 
-.sign-box .form form .attr input {
+.sign-box .form-sign form .attr-sign input {
     line-height: 18px; 
     font-size: 15px; 
     padding: 8px; 
@@ -57,12 +58,12 @@
     margin-top: 8px; 
     border-radius: 8px; 
 }
-.form form .btn {
+.form-sign form .btn-sign {
     text-align: center; 
     padding: 18px; 
 } 
 
-.form form .btn button {
+.form-sign form .btn-sign button {
     background-color: #666699; 
     color: #fff; 
     border: none; 
@@ -71,7 +72,7 @@
     border-radius: 3px; 
 }
 
-.form form .btn button:hover {
+.form-sign form .btn-sign button:hover {
     opacity: 0.7; 
     cursor: pointer; 
 }

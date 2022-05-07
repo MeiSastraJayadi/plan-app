@@ -1,16 +1,7 @@
-import { useState, useEffect } from 'react'; 
-import useFetch from './usefetch'; 
+import { useEffect, useState } from 'react'; 
 
-const User = ({ token, setRU, Add, setAdd, setAttnd }) => {
-    const fetchUrl = `https://planapp6-meisastrajayadi.cloud.okteto.net/content_api/get_userevent`; 
-    const [onDelete, setOnDelete] = useState(false); 
+const RawUser = ({ token, setAdd, userData, setUserData, searchData, setSearchData }) => {
     const [rowData, setRowData] = useState(null); 
-
-    const { data, pending, error } = useFetch(fetchUrl, token, false, Add, onDelete)
-
-    useEffect(() => {
-        setAttnd(data); 
-    }, [data]); 
 
     const onUpdate = object => {
         setAdd(object); 
@@ -18,8 +9,8 @@ const User = ({ token, setRU, Add, setAdd, setAttnd }) => {
         page.classList.toggle("blur"); 
     }
 
-    const deleteFunction = id => {
-        const delUrl = `https://planapp6-meisastrajayadi.cloud.okteto.net/content_api/delete_user/${id}`; 
+    const deleteFunction = object => {
+        const delUrl = `https://planapp6-meisastrajayadi.cloud.okteto.net/content_api/delete_user/${object.id}`; 
         fetch(delUrl, {
             method : "DELETE", 
             headers : {
@@ -28,7 +19,12 @@ const User = ({ token, setRU, Add, setAdd, setAttnd }) => {
         })
         .then(value => {
             if(value.ok){
-                setOnDelete(!onDelete)
+                const sData = searchData.map(o => o); 
+                const uData = userData.map(o => o);  
+                sData.splice(sData.indexOf(object), 1); 
+                uData.splice(uData.indexOf(object), 1); 
+                setSearchData(sData); 
+                setUserData(uData); 
                 return; 
             }
             else {
@@ -43,27 +39,27 @@ const User = ({ token, setRU, Add, setAdd, setAttnd }) => {
     useEffect(() => {
         let i = 0; 
         let j = 0; 
-        if(data) {
+        if(searchData) {
             let rUniversal = []; 
             let r = []; 
-            for(i; i < data.length; i++){
-                const obj = Object.assign({}, data[i]); 
+            for(i; i < searchData.length; i++){
+                const obj = Object.assign({}, searchData[i]); 
                 const jsx = (
                 <div className="attendees-bottom">
                     <div className="object-action">
                         <button className="object-action-add" onClick={e => {onUpdate(obj); e.preventDefault()}}><ion-icon name="pencil-outline"></ion-icon></button>
-                        <button className="object-action-delete" onClick={e => {deleteFunction(obj.id); e.preventDefault()}}><ion-icon name="trash-outline"></ion-icon></button>
+                        <button className="object-action-delete" onClick={e => {deleteFunction(obj); e.preventDefault()}}><ion-icon name="trash-outline"></ion-icon></button>
                     </div>
                     <div className="attendees-content">
-                        <h2>{`${data[i].first_name} ${data[i].last_name}`}</h2>
-                        <label className="phone">Phone : {data[i].phone}</label><br/>
-                        <label className="email">Email : {data[i].email}</label>
+                        <h2>{`${searchData[i].first_name} ${searchData[i].last_name}`}</h2>
+                        <label className="phone">Phone : {searchData[i].phone}</label><br/>
+                        <label className="email">Email : {searchData[i].email}</label>
                     </div>
                 </div>
                 )
                 r.push(jsx); 
                 j++; 
-                if(j > 2 || i === data.length - 1){
+                if(j > 2 || i === searchData.length - 1){
                     const rw = r.map(object => object); 
                     const rowJsx = (
                         <div className="row">
@@ -77,32 +73,13 @@ const User = ({ token, setRU, Add, setAdd, setAttnd }) => {
             }
             setRowData(rUniversal); 
         }
-    }, [data]); 
-
-    useEffect(() => {
-        if(data){
-            const rData = data.map(object => object).reverse(); 
-            let recent = []; 
-            if(rData.length < 10){
-                recent = rData; 
-            }
-            else {
-                for(let i = 0; i < 10; i++){
-                    recent.push(rData[i]); 
-                }
-            }
-            setRU(recent); 
-        }
-    }, [data]); 
-
+    }, [searchData]); 
 
     return (
         <div className="content-bottom">
-            {pending && <h2>Fetching Data...</h2>}
-            {error && <h2>An Error Occured...</h2>}
             {rowData !== null && rowData}
         </div>
     )
 }
 
-export default User; 
+export default RawUser; 

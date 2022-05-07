@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'; 
 import Select from 'react-select'; 
 
-const UserForm = ({ setAdd, token, Add }) => {
+const UserForm = ({ setAdd, token, Add, setSearchData, searchData, setUserData, userData, search }) => {
     const createUrl = `https://planapp6-meisastrajayadi.cloud.okteto.net/content_api/create_ussr`; 
     const updateUrl = `https://planapp6-meisastrajayadi.cloud.okteto.net/content_api/update_ussr/`; 
     const [firstName, setFirstName] = useState(null); 
@@ -55,12 +55,45 @@ const UserForm = ({ setAdd, token, Add }) => {
         })
         .then(value => {
             if(value.ok || value.status === 302){
-                setAdd(false); 
-                onClick(); 
+                return value.json(); 
             }
             else {
                 return new Promise.reject(value); 
             }
+        })
+        .then(result => {
+            if(method === "PUT" && searchData){
+                const sData = searchData.map(obj => {
+                    if(obj.id === result.id){
+                        return result; 
+                    }
+                    else {
+                        return obj; 
+                    }
+                })
+                const uData = userData.map(obj => {
+                    if(obj.id === result.id){
+                        return result; 
+                    }
+                    else {
+                        return obj; 
+                    }
+                })
+                setSearchData(sData); 
+                setUserData(uData); 
+            }
+            else if(method === "POST" && searchData){
+                const sData = searchData.map(o => o); 
+                const uData = userData.map(o => o); 
+                uData.push(result); 
+                if(result.last_name.includes(search) || result.first_name.includes(search)){
+                    sData.push(result); 
+                }
+                setSearchData(sData); 
+                setUserData(uData); 
+            }
+            setAdd(false); 
+            onClick(); 
         })
         .catch(err => {
             console.log(`Error Type : ${err.name}`); 

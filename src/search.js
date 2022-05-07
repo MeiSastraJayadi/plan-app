@@ -9,16 +9,27 @@ const Search = ({search, setSearchEvent, Data, upcoming}) => {
     }, [upcoming])
     
     const useSearch = e => {
-        search(true);
-        const eventData = Data.filter(value => {
-            if(value.name.includes(searchValue)){
-                return value; 
+        search(searchValue);
+        const retData = Data.filter(value => {
+            if(upcoming !== "attendees"){
+                if(value.name.includes(searchValue)){
+                    return value; 
+                }
+                else if((searchValue === null) || (searchValue === "")){
+                    return value; 
+                }
             }
-            else if((searchValue === null) || (searchValue === "")){
-                return value; 
+            else {
+                if(value.first_name.includes(searchValue) || value.last_name.includes(searchValue)){
+                    return value; 
+                }
+                else if((searchValue === null) || (searchValue === "")){
+                    return value; 
+                }
             }
         })
-        setSearchEvent(eventData); 
+        console.log(retData); 
+        setSearchEvent(retData); 
         e.preventDefault(); 
     }
 

@@ -367,6 +367,40 @@ body {
     transition: 0.5s; 
 } 
 
+.logout {
+    position: fixed; 
+    padding: 25px; 
+    z-index: 200; 
+    top: 20%; 
+    left: 39%; 
+    background-color: rgba(100,100,100,0.4); 
+    border: 2px solid #4d4d4d;
+    transition: 0.5s; 
+    color: #fff; 
+}
+
+.logout .btn {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: rgba(100,100,100,0); 
+    border : none; 
+}
+
+.logout .btn button {
+    padding: 10px; 
+    font-size: 18px; 
+    background-color: #9933ff; 
+    border: none; 
+    color: #fff; 
+    margin: 30px; 
+}
+
+.logout .btn button:hover {
+    cursor: pointer; 
+    opacity: 0.7; 
+}
+
 .add-form.venue {
     top: 10%; 
     left: 15%; 

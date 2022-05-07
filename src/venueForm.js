@@ -1,7 +1,8 @@
 import { useState, useEffect} from 'react'; 
 
-const VenueForm = ({ setAdd, token, Add}) => {
+const VenueForm = ({ setAdd, token, Add, setSearchData, setVenueList, searchData, VenueList, search }) => {
     const urlVenue = `https://planapp6-meisastrajayadi.cloud.okteto.net/content_api/create_venue`; 
+    const urlVenueID = `https://planapp6-meisastrajayadi.cloud.okteto.net/content_api/get_venue_by_id/`; 
     const updateUrl = `https://planapp6-meisastrajayadi.cloud.okteto.net/content_api/update_venue/`; 
     const [venueName, setVenueName] = useState(null); 
     const [zipCode, setZipCode] = useState(null); 
@@ -83,14 +84,71 @@ const VenueForm = ({ setAdd, token, Add}) => {
                 console.log(value); 
                 console.log(venueData); 
                 if(value.ok || value.status === 302){
-                    setAdd(false); 
-                    onClick(); 
-                    e.preventDefault();
-                    return; 
+                    if(method === "PUT" && searchData){
+                        fetch(urlVenueID+Add.id, {
+                            method : "GET", 
+                            headers : {
+                                "Authorization" : `Token ${token}`
+                            }
+                        })
+                        .then(result => {
+                            if(result.ok || result.status === 302){
+                                return result.json(); 
+                            }
+                            else {
+                                return new Promise.reject(result); 
+                            }
+                        })
+                        .then(value => {
+                            const s = searchData.map(o => o); 
+                            const vl = VenueList.map(o => o); 
+                            const newSearch = s.map(ob => {
+                                if(ob.id !== Add.id){
+                                    return ob; 
+                                }
+                                else {
+                                    return value; 
+                                }
+                            })
+                            const newVenueList = vl.map(ob => {
+                                if(ob.id !== Add.id){
+                                    return ob; 
+                                }
+                                else {
+                                    return value; 
+                                }
+                            })
+                            console.log(newSearch); 
+                            setSearchData(newSearch); 
+                            setVenueList(newVenueList);
+                            setAdd(false); 
+                            onClick(); 
+                            e.preventDefault();
+                            return; 
+                        })
+                        .catch(err => console.log(err.name))
+                    }
+                    else {
+                        return value.json();  
+                    }
                 }
                 else {
                     return new Promise.reject(value); 
                 }
+            })
+            .then(result => {
+                const sData = searchData.map(o => o); 
+                const vData = VenueList.map(o => o); 
+                vData.push(result); 
+                if(result.name.includes(search)){
+                    sData.push(result); 
+                }
+                setSearchData(sData); 
+                setVenueList(vData); 
+                setAdd(false); 
+                onClick(); 
+                e.preventDefault();
+
             })
             .catch(err => {
                 console.log("Failed to Created"); 

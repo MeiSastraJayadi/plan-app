@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'; 
+import { useParams, withRouter } from 'react-router-dom'; 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'; 
 import { useLocation } from 'react-router-dom'; 
 import { useEffect, useRef, useState } from 'react'; 
@@ -8,6 +8,8 @@ import VenueForm from './venueForm';
 import RawVenue from './rawVenue'; 
 import RecentUser from './recentUser'; 
 import Raw from './eventRaw'; 
+import LogOut from './logout'; 
+import RawUser from './rawUser'; 
 import User from './ussr'; 
 import Cal from './reactCalendar'; 
 import Search from './search'; 
@@ -22,12 +24,12 @@ import './calendar.css';
 import './content.css'; 
 import './nav.css'; 
 
-const Content = ({path}) => {
+const Content = ({path, history}) => {
     const { username } = useParams();  
     const topLeftr = useRef(null); 
     const contentBottom = useRef(null); 
     const location = useLocation(); 
-    const token = location.state.token;  
+    const [token, setToken] = useState(location.state.token); 
     const [formActive, setForm] = useState(false); 
     const [eventUpcoming, setUpcoming] = useState(true); 
     const [search, setSearch] = useState(false); 
@@ -38,11 +40,13 @@ const Content = ({path}) => {
     const [rVenue, setRecentVenue] = useState(null); 
     const [rUser, setRecentUser] = useState(null); 
     const [add, setAdd] = useState(false); 
+    const [logOut, setLogOut] = useState(false); 
     const [attd, setAttdObject] = useState(null); 
     const [user, setUser] = useState(null); 
     const [detail, setDetail] = useState(null);
     const [venueDetail, setVenueDetail] = useState(null); 
     const [venueList, setVenueList] = useState(null)
+    const [attndList, setAttndList] = useState(null); 
 
     useEffect(() => {
         const topLeft = topLeftr.current; 
@@ -99,23 +103,28 @@ const Content = ({path}) => {
     }
     
     return (
-        <Router>
         <div>
-            {add && 
-                <Switch>
-                    <Route exact path={`/${username}/event`}>
-                        <Form searchData={searchData} setSearchData={setSearchData} setEventData={setEventData} EventData={eventData} setAdd={setAdd} status={add} setForm={setForm} username={username} token={token}></Form>
-                    </Route>
-                    <Route exact path={`/${username}/venue`}>
-                        <VenueForm setAdd={setAdd} token={token} Add={add}></VenueForm>
-                    </Route>
-                    <Route exact path={`/${username}/attendees`}>
-                        <UserForm setAdd={setAdd} token={token} Add={add}></UserForm>
-                    </Route>
-                </Switch>
-            }
+            {logOut && <LogOut setLogOut={setLogOut} setToken={setToken} history={history}/>}
+            <Router>
+                {add && 
+                    (
+                        <div>
+                            <Switch>
+                                <Route exact path={`/${username}/event`}>
+                                    <Form searchData={searchData} setSearchData={setSearchData} setEventData={setEventData} EventData={eventData} setAdd={setAdd} status={add} setForm={setForm} username={username} token={token}></Form>
+                                </Route>
+                                <Route exact path={`/${username}/venue`}>
+                                    <VenueForm setAdd={setAdd} token={token} Add={add} setSearchData={setSearchData} setVenueList={setVenueList} searchData={searchData} VenueList={venueList} search={search}></VenueForm>
+                                </Route>
+                                <Route exact path={`/${username}/attendees`}>
+                                    <UserForm setAdd={setAdd} token={token} Add={add} setSearchData={setSearchData} searchData={searchData} setUserData={setAttndList} userData={attndList} search={search}></UserForm>
+                                </Route>
+                            </Switch>
+                        </div>
+                    )
+                }
             <div className="page">
-                <Nav username={username} path={path}></Nav>
+                <Nav username={username} path={path} setLogOut={setLogOut}></Nav>
                 <div className="content">
                     <div className="top">
                         <div className="left" ref={topLeftr}>
@@ -163,23 +172,25 @@ const Content = ({path}) => {
                         </Route>
                         <Route exact path={`/${username}/venue`}>
                             <h1>All Venue</h1>
-                            <Search search={setSearch} setSearchEvent={setSearchData} Data={venueList} upcoming={false}></Search>
-                            <VenueList token={token} setRV={setRecentVenue} Add={add} setAdd={setAdd} setVenueList={setVenueList}></VenueList>
+                            <Search search={setSearch} setSearchEvent={setSearchData} Data={venueList} upcoming={"venue"}></Search>
+                            {!search && <VenueList token={token} setRV={setRecentVenue} Add={add} setAdd={setAdd} setVenueList={setVenueList}></VenueList>}
                             {search && <RawVenue venueData={venueList} setVenueData={setVenueList} searchData={searchData} setSearchData={setSearchData} setAdd={setAdd} token={token}></RawVenue>}
                             {(searchData && !searchData.length) && <h2>No Data...</h2>}
                         </Route>
                         <Route exact path={`/${username}/attendees`}>
                             <h1>All Attendees</h1>
-                            <Search search={setSearch} setSearchEvent={setSearchData} Data={eventData} upcoming={false}></Search>
-                            <User token={token} setRU={setRecentUser} Add={add} setAdd={setAdd}></User>
+                            <Search search={setSearch} setSearchEvent={setSearchData} Data={attndList} upcoming={"attendees"}></Search>
+                            {!search && <User token={token} setAttnd={setAttndList} setRU={setRecentUser} Add={add} setAdd={setAdd}></User>}
+                            {search && <RawUser token={token} setAdd={setAdd} userData={attndList} setUserData={setAttndList} searchData={searchData} setSearchData={setSearchData}></RawUser>}
+                            {(searchData && !searchData.length) && <h2>No Data...</h2>}
                         </Route>
                     </Switch>
                     </div>
                 </div>
             </div>
-        </div>
         </Router>
+        </div>
     )
 }
 
-export default Content; 
+export default withRouter(Content); 

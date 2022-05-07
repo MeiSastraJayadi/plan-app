@@ -32,7 +32,7 @@ const RawVenue = ({venueData, setVenueData, searchData, setSearchData, setAdd, t
                 const data = searchData.map(obj => obj);  
                 const allData = venueData.map(obj => obj); 
                 data.splice(data.indexOf(object), 1)
-                allData.splice(data.indexOf(object), 1); 
+                allData.splice(allData.indexOf(object), 1); 
                 setSearchData(data); 
                 setVenueData(allData); 
                 return; 
@@ -54,7 +54,7 @@ const RawVenue = ({venueData, setVenueData, searchData, setSearchData, setAdd, t
 
     return (
         <div className="bottom-content">
-        {venueData !== null && 
+        {searchData !== null && 
             searchData.map((object, i) => {
                 return (
                 <div className="venue-cntn">

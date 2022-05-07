@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import './nav.css'; 
 
-const Nav = ({username, path}) => {
+const Nav = ({username, path, setLogOut}) => {
     const select = (id) => {
         const item = document.querySelector(`#${id}`); 
         if(id !== "tgl") {
@@ -17,6 +17,13 @@ const Nav = ({username, path}) => {
             nav.classList.toggle("open"); 
         }
     }
+
+    const onLogOut = e => {
+        const page = document.querySelector(".page"); 
+        page.classList.toggle("blur"); 
+        setLogOut(true); 
+        e.preventDefault(); 
+    }
     
     return (
         <div className="nav">
@@ -31,7 +38,7 @@ const Nav = ({username, path}) => {
                 {path !== "venue" && <li><Link className="anchor" id="venue"  onClick={() => select("venue")} to={`/${username}/venue`}><span className="icon"><ion-icon name="location-outline"></ion-icon></span><span className="text">Venue</span></Link></li>}
                 {path === "attendees" && <li><Link className="anchor active" id="attendees" onClick={() => select("attendees")} to={`/${username}/attendees`}><span className="icon"><ion-icon name="people-outline"></ion-icon></span><span className="text">Attendees</span></Link></li>}
                 {path !== "attendees" && <li><Link className="anchor" id="attendees" onClick={() => select("attendees")} to={`/${username}/attendees`}><span className="icon"><ion-icon name="people-outline"></ion-icon></span><span className="text">Attendees</span></Link></li>}
-                <li><a className="anchor" id="logout"  onClick={() => select("logout")} href="#"><span className="icon"><ion-icon name="log-out-outline"></ion-icon></span><span className="text">Logout</span></a></li>
+                <li><a className="anchor" id="logout"  onClick={onLogOut}><span className="icon"><ion-icon name="log-out-outline"></ion-icon></span><span className="text">Logout</span></a></li>
             </ul>
         </div>
     )

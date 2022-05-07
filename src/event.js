@@ -10,6 +10,7 @@ const EventBottom = ({setAdd, formActive, token, setUpcoming, setData, upcoming,
     const [ready, setReady] = useState(false); 
     const [onDelete, setOnDelete] = useState(false); 
     let now = new Date(); 
+
     const getVenue = (data, pending) => {
         const list = {};  
         let i = 0; 

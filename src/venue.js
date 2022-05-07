@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react'; 
 
-const VenueList = ({ token, setRV, Add, setAdd, setVenueList }) => {
+const VenueList = ({ token, setRV, Add, setAdd, setVenueList}) => {
     const url = `https://planapp6-meisastrajayadi.cloud.okteto.net/content_api/get_venue`; 
     const deleteUrl = `https://planapp6-meisastrajayadi.cloud.okteto.net/content_api/delete_venue/`; 
     const [Del, setDel] = useState(false); 
@@ -8,6 +8,7 @@ const VenueList = ({ token, setRV, Add, setAdd, setVenueList }) => {
     const [pending, setPending] = useState(true); 
     const [error, setError] = useState(false); 
     const abort = new AbortController(); 
+
     useEffect(() => {
         fetch(url, {
             signal: abort.signal, 
